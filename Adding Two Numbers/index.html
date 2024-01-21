@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        .addition{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form{
+            width: 20rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        form input{
+            outline: none;
+            padding: 12px;
+            border-radius: 8px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="addition">
+        <form action="" class="form">
+            <input type="number" placeholder="Enter Number A" id="num1">
+            <input type="number" placeholder="Enter Number B" id="num2">
+            <button type="button" onclick="add1()">Add</button>
+            <div class="sum" id="sum"></div>
+        </form>
+    </div>
+
+    <script>
+        function add1(){
+            var num1=document.getElementById("num1").value;
+            console.log("num1: "+num1);
+            var num2=document.getElementById("num2").value;
+            console.log("num2: "+num2);
+            var sum=parseInt(num1)+parseInt(num2);
+            console.log("sum: "+sum);
+
+            document.getElementById("sum").innerHTML=sum;
+        }
+    </script>
+</body>
+</html>
