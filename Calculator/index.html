@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1{
+            font-size: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            padding: 16px;
+            background-color: blueviolet;
+            border-radius: 16px;
+        }
+
+        .calculator input{
+            color: #333;
+        }
+        
+        #display {
+            background-color: #eee;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .buttons{
+            width: 100%;
+        }
+        
+        .buttons button {
+            background-color: #fafafa;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 18px;
+            outline: none;
+            border-radius: 8px;
+            border: #fff;
+        }
+        .equal{
+            width: 115px !important;
+        }
+        
+        .buttons input[type="button"] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <div class="1">
+                <button onclick="clearDisplay()">C</button>
+                <button onclick="calculatePercentage()">%</button>
+                <button onclick="deleteLast()">⌫</button>
+                <button onclick="appendOperator('/')">/</button>
+            </div>
+            
+            <div class="2">
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button onclick="appendOperator('*')">*</button>
+            </div>
+            
+            <div class="3">
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="appendOperator('-')">-</button>
+            </div>
+            
+            <div class="4">
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendOperator('+')">+</button>
+            </div>
+            
+            <div class="5">
+                <button onclick="appendValue('0')">0</button>
+                <button onclick="appendDecimal()">.</button>
+                <button class="equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let displayValue = "";
+
+        function appendValue(value) {
+            displayValue += value;
+            updateDisplay();
+        }
+        
+        function appendOperator(operator) {
+            if (displayValue !== "" && !isOperator(displayValue.slice(-1))) {
+                displayValue += operator;
+                updateDisplay();
+            }
+        }
+        
+        function appendDecimal() {
+            const lastValue = displayValue.split(/[\+\-\*\/]/).pop();
+            if (!lastValue.includes('.')) {
+                displayValue += '.';
+                updateDisplay();
+            }
+        }
+        
+        function clearDisplay() {
+            displayValue = "";
+            updateDisplay();
+        }
+
+        function calculatePercentage() {
+            if (displayValue !== "") {
+            displayValue = (parseFloat(displayValue) / 100).toString();
+            updateDisplay();
+        }
+}
+        
+        function deleteLast() {
+            displayValue = displayValue.slice(0, -1);
+            updateDisplay();
+        }
+        
+        function calculate() {
+            try {
+                const result = eval(displayValue);
+                displayValue = result.toString();
+                updateDisplay();
+            } catch (error) {
+                displayValue = "Error";
+                updateDisplay();
+            }
+        }
+        
+        function updateDisplay() {
+            document.getElementById('display').value = displayValue;
+        }
+        
+        function isOperator(char) {
+            return ['+', '-', '*', '/'].includes(char);
+        }
+    </script>
+</body>
+</html>
