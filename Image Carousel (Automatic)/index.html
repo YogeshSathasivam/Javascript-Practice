@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        *{
+            margin: 8px auto;
+            box-sizing: border-box;
+        }
+        #banner {
+            overflow: hidden;
+            width: 1200px;
+            height: 700px;
+        }
+
+        .banner-contents {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .banner-image {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="banner-contents">
+            <img src="https://source.unsplash.com/1200x800/?Nature" class="banner-image">
+            <img src="https://source.unsplash.com/1200x800/?flowers" class="banner-image">
+            <img src="https://source.unsplash.com/1200x800/?trees" class="banner-image">
+        </div>
+    </div>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var slides = document.getElementsByClassName("banner-image");
+            
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            
+            myIndex++;
+            if (myIndex > slides.length) {
+                myIndex = 1;
+            }
+
+            slides[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000);
+        }
+    </script>
+</body>
+</html>

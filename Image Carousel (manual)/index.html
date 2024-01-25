@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel with Buttons</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            background-color: bisque;
+        }
+        .container{
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        #carousel {
+            overflow: hidden;
+            width: 1200px;
+            height: 600px;
+            border-radius: 16px;
+        }
+        .carousel-contents {
+            display: flex;
+            transition: transform 1s ease;
+        }
+        .carousel-image {
+            width: 100%;
+        }
+        .buttons{
+            width: 1200px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            cursor: pointer;
+            width: 120px;
+            height: 40px;
+            border: none;
+            background-color: blueviolet;
+            color: white;
+            font-size: 16px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Carousel</h1>
+        <div id="carousel">
+            <div class="carousel-contents">
+                <img src="https://source.unsplash.com/1200x600/?Nature" class="carousel-image">
+                <img src="https://source.unsplash.com/1200x600/?birds" class="carousel-image">
+                <img src="https://source.unsplash.com/1200x600/?trees" class="carousel-image">
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        var currentIndex = 0;
+    
+        function showImage(index) {
+            var images = document.querySelectorAll('.carousel-image');
+            var contents = document.querySelector('.carousel-contents');
+    
+            currentIndex = (index + images.length) % images.length;
+    
+            var translateValue = -1 * currentIndex * 100;
+            contents.style.transform = 'translateX(' + translateValue + '%)';
+        }
+    
+        function prevImage() {
+            showImage(currentIndex - 1);
+        }
+    
+        function nextImage() {
+            showImage(currentIndex + 1);
+        }
+    </script>
+</body>
+</html>
