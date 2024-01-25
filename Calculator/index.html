@@ -32,7 +32,7 @@
 
         .calculator input{
             color: #333;
-        }
+        } 
         
         #display {
             background-color: #eee;
@@ -108,16 +108,39 @@
         let displayValue = "";
 
         function appendValue(value) {
+            console.log("value",value)
             displayValue += value;
             updateDisplay();
         }
-        
+
+        // Working
         function appendOperator(operator) {
-            if (displayValue !== "" && !isOperator(displayValue.slice(-1))) {
-                displayValue += operator;
-                updateDisplay();
+            if(isOperator(displayValue.slice(-1))) {
+                displayValue=displayValue.slice(0,-1);
             }
+            displayValue += operator;
+            updateDisplay();
         }
+
+        // Problematic
+        // function appendOperator(operator) {
+        //     console.log(operator);
+        //     console.log(displayValue !== "");
+        //     console.log(!isOperator(displayValue.slice(-1)));   
+        //     if (displayValue !== "" && !isOperator(displayValue.slice(-1))) {
+        //         displayValue += operator;
+        //         let displaynum=updateDisplay();
+        //         console.log(displayValue)
+        //     }
+        //     console.log(isOperator(displayValue.slice(-1)))
+        //     console.log(isOperator(displayValue.slice(-2)))
+        //     if (displayValue !== "" && isOperator(displayValue.slice(-1) && isOperator(displayValue.slice(-2)))) {
+        //         console.log(displayValue, displayValue.slice(-2,-1));
+        //         let displaynum=updateDisplay();
+        //         console.log("displaynum",displaynum)
+        //         updateDisplay();
+        //     }
+        // }
         
         function appendDecimal() {
             const lastValue = displayValue.split(/[\+\-\*\/]/).pop();
