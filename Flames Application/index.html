@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;    
+            background-color: papayawhip;        
+        }
+
+        h1 {
+            color: #ff6347;
+        }
+
+        .container{
+            width: 400px;
+            margin: 100px auto;
+            background-color: #fafafa;
+            padding: 16px 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow: hidden;
+            /* border: 3px solid #ebebeb; */
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        #names {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        label{
+            font-weight: bold;
+            color: #333;
+        }
+
+        .inputbox{
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+        }
+
+        .inputbox input{
+            padding: 16px;
+            outline: none;
+            border: 2px solid #ff6347;
+            border-radius: 8px;
+            width: 100%;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+
+       .flames {
+            margin-top: 16px;
+            padding: 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        .clear {
+            margin-top: 16px;
+            padding: 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #777777;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            width: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FLAMES</h1>
+        <div id="names">
+            <div class="inputbox">
+                <label for="yourName">Your Name:</label>
+                <input type="text" id="yourName" placeholder="Your Name">
+            </div>
+            <div class="inputbox">
+                <label for="partnerName">Partner's Name:</label>
+                <input type="text" id="partnerName" placeholder="Partner's Name">
+            </div>
+        
+        </div>
+        <div class="buttons">
+            <button onclick="calculateFLAMES()" class="flames">Calculate FLAMES</button>
+            <button onclick="clearFields()" class="clear">Clear</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
