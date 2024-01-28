@@ -1,4 +1,3 @@
-// Function to find out the FLAMES result
 function calculateFLAMES() {
     let yourName = document.getElementById('yourName').value.toUpperCase();
     let partnerName = document.getElementById('partnerName').value.toUpperCase();
@@ -8,14 +7,12 @@ function calculateFLAMES() {
     flame(a, b);
 }
 
-// Function to clear input fields and result
 function clearFields() {
     document.getElementById('yourName').value = '';
     document.getElementById('partnerName').value = '';
     document.getElementById('result').innerText = '';
 }
 
-// FLAMES logic
 function flame(a, b) {
     let i, j, k, l = 1, n, m, sc = 0, tc, rc = 0, fc = 5;
     let c;
@@ -59,7 +56,6 @@ function flame(a, b) {
         l++;
     }
 
-    // Display the result
     let resultContainer = document.getElementById('result');
     if (f[0] == 'e')
         resultContainer.innerText = q + " is ENEMY to " + w;
